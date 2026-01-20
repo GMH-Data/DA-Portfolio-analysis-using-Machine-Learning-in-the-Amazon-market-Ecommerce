@@ -20,14 +20,14 @@ The data pipeline follows a strict **ETL -> Analytics -> Prediction** flow. The 
 
 ```mermaid
 graph TD
-    A[Raw Data (CSV)] -->|"Cleaning & Regex"| B(Preprocessed Data)
+    A["Raw Data (CSV)"] -->|"Cleaning & Regex"| B("Preprocessed Data")
     B -->|Feature Engineering| C{Feature Space}
     C -->|K-Means Algorithm| D[Global Segmentation]
-    C -->|DBSCAN Algorithm| E["Density & Anomaly Detection"]
+    C -->|"DBSCAN Algorithm"| E["Density & Anomaly Detection"]
     D --> F[Hybrid Market Map]
     E --> F
     F -->|Labeling| G[Market Archetypes]
-    C -->|Train/Test Split| H[Random Forest Model]
+    C -->|"Train/Test Split"| H["Random Forest Model"]
     G --> H
     H -->|Inference| I["Growth Simulator & Recommendations"]
 ```
