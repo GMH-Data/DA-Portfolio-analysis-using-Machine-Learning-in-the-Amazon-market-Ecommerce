@@ -7,20 +7,29 @@
 
 ## 1. 🏗️ System Architecture
 
-The data pipeline follows a strict **ETL -> Analytics -> Prediction** flow to ensure data integrity and scalability.
+The data pipeline follows a strict **ETL -> Analytics -> Prediction** flow. The system architecture is organized into the following key stages:
+
+*   **Step 1: ETL & Preprocessing** — Raw data cleaning and regex-based normalization.
+*   **Step 2: Feature Engineering** — Creation of strategic indicators (Price Stability, Quality Score, etc.).
+*   **Step 3: Hybrid Clustering Strategy**
+    *   *K-Means:* Global market segmentation into 4 foundational clusters.
+    *   *DBSCAN:* Density-based anomaly and niche detection.
+*   **Step 4: Market Archetype Labeling** — Intersecting clusters to identify "Hidden Gems" and "Mavericks".
+*   **Step 5: Predictive Modeling** — Random Forest training to predict investment potential.
+*   **Step 6: Decision Support Output** — Growth Simulator and actionable investment recommendations.
 
 ```mermaid
 graph TD
-    A[Raw Data (CSV)] -->|Cleaning & Regex| B(Preprocessed Data)
+    A[Raw Data (CSV)] -->|"Cleaning & Regex"| B(Preprocessed Data)
     B -->|Feature Engineering| C{Feature Space}
     C -->|K-Means Algorithm| D[Global Segmentation]
-    C -->|DBSCAN Algorithm| E[Density & Anomaly Detection]
+    C -->|DBSCAN Algorithm| E["Density & Anomaly Detection"]
     D --> F[Hybrid Market Map]
     E --> F
     F -->|Labeling| G[Market Archetypes]
     C -->|Train/Test Split| H[Random Forest Model]
     G --> H
-    H -->|Inference| I[Growth Simulator & Recommendations]
+    H -->|Inference| I["Growth Simulator & Recommendations"]
 ```
 
 ---
